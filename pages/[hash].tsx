@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse, NextPage } from "next";
 import Head from "next/head";
-import connectToDatabase from "@/mongodb";
+import connectToDatabase from "@/config/mongodb";
 import { COLLECTION_NAMES } from "@/utils/types";
 
 export async function getServerSideProps(req: NextApiRequest) {

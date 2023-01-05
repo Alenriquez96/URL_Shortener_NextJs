@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import connectToDatabase from "@/mongodb";
+import connectToDatabase from "@/config/mongodb";
 import { customAlphabet } from "nanoid";
 import { COLLECTION_NAMES } from "@/utils/types";
 
