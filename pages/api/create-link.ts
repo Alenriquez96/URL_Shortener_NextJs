@@ -37,7 +37,8 @@ export default async function CreateLink(
     const linkExists = await urlInfoCollection.findOne({
       link,
     });
-    const shortUrl = `${process.env.HOST}/${hash}`;
+    // const shortUrl = `${process.env.HOST}/${hash}`;
+    const shortUrl = `https://urlshort-dusky.vercel.app/${hash}`;
     if (!linkExists) {
       await urlInfoCollection.insertOne({
         link,
