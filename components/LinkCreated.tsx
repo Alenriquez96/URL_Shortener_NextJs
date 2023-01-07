@@ -24,7 +24,7 @@ const LinkCreated = ({ linkProp, isCopied }: linkProp) => {
           </div>
           <div
             onClick={handleCopy}
-            className="h-full flex justify-center items-center w-[40px]"
+            className="h-full flex justify-center items-center w-[50px] cursor-pointer"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
