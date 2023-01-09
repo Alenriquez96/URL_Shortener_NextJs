@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://urlshort-dusky.vercel.app/api/sitemap.xml
