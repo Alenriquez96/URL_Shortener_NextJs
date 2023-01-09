@@ -19,7 +19,7 @@ export default async function CreateLink(
       message: "Only POST method is accepted on this route",
     });
   }
-  const { link } = req.body;
+  const { link }: { link: string } = req.body;
 
   if (!link) {
     res.status(400).send({
@@ -30,37 +30,47 @@ export default async function CreateLink(
     return;
   }
 
-  try {
-    const database = await connectToDatabase();
-    const urlInfoCollection = database.collection(COLLECTION_NAMES["url-info"]);
-    const hash = getHash();
-    const linkExists = await urlInfoCollection.findOne({
-      link,
-    });
-    // const shortUrl = `${process.env.HOST}/${hash}`;
-    const shortUrl = `https://urlshort-dusky.vercel.app/${hash}`;
-    if (!linkExists) {
-      await urlInfoCollection.insertOne({
+  if (link.startsWith("http") || link.startsWith("https")) {
+    try {
+      const database = await connectToDatabase();
+      const urlInfoCollection = database.collection(
+        COLLECTION_NAMES["url-info"]
+      );
+      const hash = getHash();
+      const linkExists = await urlInfoCollection.findOne({
         link,
-        uid: hash,
-        shortUrl,
-        createdAt: new Date(),
+      });
+      // const shortUrl = `${process.env.HOST}/${hash}`;
+      const shortUrl = `https://urlshort-dusky.vercel.app/${hash}`;
+      if (!linkExists) {
+        await urlInfoCollection.insertOne({
+          link,
+          uid: hash,
+          shortUrl,
+          createdAt: new Date(),
+        });
+      }
+      res.status(201).send({
+        type: "success",
+        code: 201,
+        data: {
+          shortUrl: linkExists?.shortUrl || shortUrl,
+          link,
+        },
+      });
+    } catch (e: any) {
+      res.status(500);
+      res.send({
+        code: 500,
+        type: "error",
+        message: e.message,
       });
     }
-    res.status(201).send({
-      type: "success",
-      code: 201,
-      data: {
-        shortUrl: linkExists?.shortUrl || shortUrl,
-        link,
-      },
-    });
-  } catch (e: any) {
-    res.status(500);
-    res.send({
-      code: 500,
+  } else {
+    res.status(400).send({
+      code: 400,
       type: "error",
-      message: e.message,
+      data: { shortUrl: "Not a valid Url", link },
     });
   }
 }

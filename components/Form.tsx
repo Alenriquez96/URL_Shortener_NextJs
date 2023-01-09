@@ -1,9 +1,13 @@
+import { useState } from "react";
+
 type formProps = {
   loading: (bool: boolean) => void;
   response: (res: any) => void;
 };
 
 const Form = ({ loading, response }: formProps) => {
+  const [error, setError] = useState(false);
+
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     loading(true);
@@ -22,9 +26,15 @@ const Form = ({ loading, response }: formProps) => {
         const res = await fetch(endpoint, options);
         const result = await res.json();
         response(result);
+        if (result.type === "error") {
+          setError(true);
+        } else {
+          setError(false);
+        }
         event.target.link.value = "";
         loading(false);
       } catch (error) {
+        setError(true);
         console.error(error);
         loading(false);
       }
@@ -38,7 +48,9 @@ const Form = ({ loading, response }: formProps) => {
       <form onSubmit={handleSubmit}>
         <fieldset className="flex items-center justify-between">
           <input
-            className="w-full sm:w-[450px] lg:w-[730px] h-[65px] rounded-l-[10px] text-[#ccc] text-[16px] py-[12px] px-[16px] bg-[#262626] mr-[10px] shadow-2xl"
+            className={`w-full sm:w-[450px] lg:w-[730px] h-[65px] rounded-l-[10px] text-[#ccc] text-[16px] py-[12px] px-[16px] bg-[#262626] mr-[10px] shadow-2xl ${
+              error ? "border-red-400 border-2" : ""
+            }`}
             name="link"
             type="text"
             placeholder="Introduce url"
