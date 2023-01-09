@@ -33,7 +33,11 @@ export default function Home() {
         <meta
           name="description"
           content="URL shortener free for transforming long, ugly links into nice, memorable and trackable short URLs. Use it to shorten links"
-        ></meta>
+        />
+        <meta
+          name="google-site-verification"
+          content="ksCmB94YP_SsVRLIC8ENpcocmJ8bYAmC3Vrp9nQVADY"
+        />
         <link rel="icon" href="/iconShort.png" />
       </Head>
       <main className="bg-[#0f1011] text-white h-screen grid place-content-center font-roboto">
