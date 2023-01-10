@@ -28,7 +28,7 @@ export default async function handler(
     },
     headers: {
       "x-rapidapi-host": "qrcodeutils.p.rapidapi.com",
-      "x-rapidapi-key": process.env.NEXT_PUBLIC_RAPIDAPI_KEY,
+      "x-rapidapi-key": "e44916d07cmshbc4468e13a40dbfp18b8c2jsn674a17e72092",
     },
   };
   try {
