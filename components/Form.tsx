@@ -45,6 +45,7 @@ const Form = ({ loading, response }: formProps) => {
   return (
     <div id="urlShortener" className="w-full">
       {/* <form action="api/create-link" method="post"> */}
+      <h2 className="text-[32px] text-white ">URL Shortener</h2>
       <form onSubmit={handleSubmit}>
         <fieldset className="flex items-center justify-between">
           <input
@@ -56,7 +57,7 @@ const Form = ({ loading, response }: formProps) => {
             placeholder="Introduce url"
           />
           <button
-            className="h-[65px] sm:w-[80px] lg:w-[140px] rounded-r-[10px] py-[12px] px-[16px] bg-[#ccc] hover:bg-[#a5a3a3] text-[#262626] font-bold"
+            className="h-[65px] min-w-[80px] sm:w-[80px] lg:w-[140px] rounded-r-[10px] py-[12px] px-[16px] bg-[#ccc] hover:bg-[#a5a3a3] text-[#262626] font-bold"
             type="submit"
           >
             Shorten

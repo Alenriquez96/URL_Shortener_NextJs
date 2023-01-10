@@ -30,7 +30,11 @@ export default async function CreateLink(
     return;
   }
 
-  if (link.startsWith("http") || link.startsWith("https")) {
+  if (
+    link.startsWith("http://") ||
+    link.startsWith("https://") ||
+    link.startsWith("www")
+  ) {
     try {
       const database = await connectToDatabase();
       const urlInfoCollection = database.collection(
