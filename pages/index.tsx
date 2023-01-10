@@ -6,6 +6,7 @@ import Heading from "@/components/Heading";
 import Spinner from "@/components/Spinner";
 import { useState, useEffect } from "react";
 import Alert from "@mui/material/Alert";
+import Header from "@/components/Header";
 
 export default function Home() {
   const [serverRes, setserverRes]: any = useState(null);
@@ -24,6 +25,43 @@ export default function Home() {
     }
   }, [isCopied]);
 
+  const paralax: any =
+    typeof document !== "undefined" && document.querySelector("#paralax");
+  const banner: HTMLElement | any =
+    typeof document !== "undefined" && document.querySelector("#banner");
+  const containerParalax: HTMLElement | any =
+    typeof document !== "undefined" &&
+    document.querySelector("#containerParalax");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 150 && banner && paralax) {
+        banner.style.backgroundSize = "150%";
+        paralax.style.opacity = 0;
+        paralax.style.translate = "0 -50px";
+        paralax.style.scale = "0.9";
+        containerParalax.style.opacity = 0;
+        containerParalax.style.translate = "0 -50px";
+        containerParalax.style.scale = "0.8";
+      } else {
+        banner.style.backgroundSize = "180%";
+        paralax.style.opacity = 1;
+        paralax.style.translate = 0;
+        paralax.style.scale = 1;
+        containerParalax.style.opacity = 1;
+        containerParalax.style.translate = 0;
+        containerParalax.style.scale = 1;
+      }
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <Head>
@@ -40,6 +78,7 @@ export default function Home() {
         />
         <link rel="icon" href="/iconShort.png" />
       </Head>
+      <Header />
       <main className="bg-[#0f1011] text-white h-screen grid place-content-center font-roboto">
         <div
           className={`absolute top-[20px] right-[20px] z-10  ease-in duration-300  ${

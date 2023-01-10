@@ -1,7 +1,11 @@
 import React from "react";
 
 const Heading = () => {
-  return <h1 className="text-[32px]">URL shortener</h1>;
+  return (
+    <h1 id="paralax" className="text-[32px] text-white duration-paralax">
+      URL shortener
+    </h1>
+  );
 };
 
 export default Heading;
