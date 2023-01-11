@@ -47,7 +47,7 @@ const Form = ({ loading, response }: formProps) => {
       {/* <form action="api/create-link" method="post"> */}
       <h2 className="text-[32px] text-white ">URL Shortener</h2>
       <form onSubmit={handleSubmit}>
-        <fieldset className="flex items-center justify-between">
+        <fieldset className="flex items-center justify-between ">
           <input
             className={`w-full sm:w-[450px] lg:w-[730px] h-[65px] rounded-l-[10px] text-[#ccc] text-[16px] py-[12px] px-[16px] bg-[#262626] mr-[10px] shadow-2xl ${
               error ? "border-red-400 border-2" : ""
