@@ -71,12 +71,13 @@ export default function Home() {
         <meta name="robots" content="all" />
         <meta
           name="description"
-          content="URL shortener free for transforming long, ugly links into nice, memorable and trackable short URLs. Use it to shorten links"
+          content="Free URL shortener for transforming long urls into short and nice looking links."
         />
         <meta
           name="google-site-verification"
           content="ksCmB94YP_SsVRLIC8ENpcocmJ8bYAmC3Vrp9nQVADY"
         />
+        <link rel="canonical" href="https://urlshort-dusky.vercel.app/" />
         <link rel="icon" href="/iconShort.png" />
       </Head>
       <Header />

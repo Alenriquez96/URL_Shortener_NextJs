@@ -5,5 +5,6 @@ module.exports = {
     generateRobotsTxt: true, // (optional)
     // REST CODE READ DOCS  ...
     priority: 1.0,
-    changefreq: "daily"
+    changefreq: "daily",
+    
     }
